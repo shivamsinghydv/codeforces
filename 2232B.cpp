@@ -1,41 +1,39 @@
 #include<iostream>
+#include<vector>
+#include<algorithm>
 
 using namespace std;
-int find_average(int arr[], int size) {
-    int sum = 0, average = 0;
-    for (int i = 0; i < size; i++) {
-        sum = sum + arr[i];
+
+int solve () {
+    int n;
+    cin >> n;
+    vector<long long> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
     }
-    return sum / size;
+    long long current_sum = a[0];
+    vector<long long> ans; //review
+    ans.push_back(a[0]);
+
+    for (int i = 1; i < n; i++) {
+        current_sum += a[i];
+
+        ans.push_back(min(ans[i-1], current_sum / (i + 1)));
+    }
+    for (int i = 0; i < n; i++) {
+        cout << ans[i] << " ";
+    }
+    cout << "\n";
+
 }
+
 int main () {
-    int t, n, average, original_first;
-    string final_string = "";
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t;
     cin >> t;
-    for (int i = 0; i < t; i++) {
-        string out_string = "";
-        cin >> n;
-        int arr[n];
-        for (int j = 0; j < n; j++) {
-            if (j == 0) {
-                original_first = arr[0];
-            }
-            cin >> arr[j];
-            average = find_average(arr, j + 1);
-            int k = 0;
-            while (k <= j) {
-            if (average > arr[k]) {
-                arr[k] = average;
-            }
-            k++;
-            }
+    while (t--) {
+        solve();
         }
-    
-        for (int num : arr) {
-            out_string = out_string + to_string(num) + " ";
-            //cout << num << " ";
-        }
-        final_string = final_string + out_string + "\n";
-    }
-    cout << final_string;
 }
