@@ -1,5 +1,5 @@
 solution
 *.dSYM
-out
 *out*
-*.out
+*out
+
