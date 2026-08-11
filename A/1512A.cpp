@@ -20,23 +20,16 @@ int main() {
             cin >> arr[i];
         }
         
-        int counterA = 0, counterB = 0, idx = 0;
-        int numB = 0, numA = arr[0];
-        For (1, n, i) {
-            if (counterA > 2 || counterB > 2) {
-                idx = i;
-                break;
-            }
-            if (arr[i] == numA) {
-                counterA++;
-            }
-            else {
-                if (numB == 0)
-                    numB = arr[i];
-                counterB++;
+        int CommonNum = arr[0];
+        if (arr[0] != arr[1] && arr[0] != arr[2]) {
+            CommonNum = arr[1];
+        }
+
+        For (0, n, i) {
+            if (arr[i] != CommonNum) {
+                cout << i + 1 << "\n";
             }
         }
-        cout << idx + 1 << "\n";
     }
     return 0;
 
