@@ -3,6 +3,7 @@
 #include <bits/stdc++.h>
 
 #define For(start, end, i) for(int i = start; i < end; i++)
+
 using namespace std;
 int main() {
     ios::sync_with_stdio(false);
@@ -11,22 +12,28 @@ int main() {
     int t;
     cin >> t;
     while (t--) {
-        int n, sum = 0;
+        int n;
         cin >> n;
-        vector<int> arr(n);
+        vector<long long> arr(n);
+        map<long long, int> freq;
+        long long sum = 0;
+        int max_freq = 0;
+        long long max_val = 0;
+
         For (0, n, i) {
             cin >> arr[i];
-        }
-        int equalCount = 0,prev = 0;
-        For(0, n, i) {
-            if (equalCount > n / 2 + 1) {
-                break;
-            }
             sum += arr[i];
-            if (arr[i] == prev) {
-                equalCount++;
+            freq[arr[i]]++;
+            if (freq[arr[i]] > max_freq) {
+                max_freq = freq[arr[i]];
+                max_val = arr[i];
             }
-            prev = arr[i];               
+        }
+        int freqOthers = n - max_freq;
+        
+        if (max_freq > freqOthers + 2) {
+            int cardsWasted = max_freq - freqOthers - 2;
+            sum -= cardsWasted*max_val;
         }
         cout << sum << "\n";
     }
