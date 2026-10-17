@@ -10,7 +10,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define For(start, end, i) for (int i = (start); i < (end); i++)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((int)(x).size())
 
@@ -25,18 +24,13 @@ using pii = pair<int, int>;
 #define dbg(x)
 #endif
 
-void solve() {
-    // read input, compute, print answer
-}
-
+void solve();
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-
     int t = 1;
-    cin >> t;  // remove if the problem has a single test case
+    cin >> t;
     while (t--) {
         solve();
     }
-    return 0;
 }
